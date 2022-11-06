@@ -1,5 +1,6 @@
 body{
     background: black;
+    height: 100%;
 }
 
 .authorization{
@@ -15,4 +16,3 @@ body{
     margin-inside: 0px;
     margin-bottom: 10px;
 }
-
