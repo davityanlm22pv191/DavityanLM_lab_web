@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>CoffeeBean</title>
-    <link href="cssstrap.min.css" rel="stylesheet">
-    <link href="csse.css" rel="stylesheet">
-    <link rel="icon" href="/frontend_course/imgntend_course/img/logo-coffee.ico" type="image/x-icon">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <link rel="icon" href="/img/logo-coffee.ico" type="image/x-icon">
 </head>
 <body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 <header>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="container">
@@ -41,16 +42,18 @@
 
 
         <div class="col-4"></div>
-        <div class="col-4">
+        <div class="col-4" id="input-email">
             <div class="input-group flex-nowrap">
                 <span class="input-group-text" id="email-wrap">📧</span>
-                <input type="text" class="form-control" placeholder="example@email.com" aria-label="example@email.com" aria-describedby="email-wrap">
+                <input type="text" class="form-control" v-on:input="checkOut ($event.target.value)"
+                       placeholder="example@email.com" aria-label="example@email.com" aria-describedby="email-wrap">
+                <script src="/js/index.js"></script>
             </div>
         </div>
         <div class="col-4"></div>
 
         <div class="col-4"></div>
-        <div class="col-4">
+        <div class="col-4" id="input-password">
             <div class="input-group flex-nowrap input-password">
                 <span class="input-group-text" id="pass-wrap">🔑</span>
                 <input type="text" class="form-control" placeholder="1234567" aria-label="1234567" aria-describedby="pass-wrap">
@@ -69,7 +72,7 @@
 </div>
 
 
-<footer class="footer fixed-bottom bg-dark text-center text-white mt-3">
+<footer class="mt-auto position-sticky bg-dark text-center text-white mt-3">
     <!-- Grid container -->
     <div class="container p-4 pb-0">
         <!-- Section: Social media -->
@@ -100,6 +103,9 @@
         <a class="text-white" href="https://vk.com/vooooooooooot"><br>VK: Lev Vechnost</a>
     </div>
 </footer>
-<script src="jsstrap.bundle.min.js"></script>
+
+
+<script src="/js/index.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
