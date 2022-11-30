@@ -8,7 +8,7 @@
               <a class="nav-link mx-2" aria-current="page" href="">Меню</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link mx-2" @click="this.$router.push({ name: 'DeliveryPage' })">Доставка</a>
+              <router-link class="nav-link" :to="{name: 'DeliveryPage'}">Доставка</router-link>
             </li>
             <li class="nav-item">
               <a class="nav-link mx-2" href="">О нас</a>

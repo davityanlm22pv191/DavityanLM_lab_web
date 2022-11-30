@@ -8,8 +8,8 @@
     </div>
     <div class="container text-center">
       <button class="btn btn-outline-light btn-lg px-5 btn-atrz"
-              type="submit"
-              @click="this.$router.push({ name: 'AuthPage' })">Войти</button>
+              type="submit">
+              <router-link class="nav-link" :to="{name: 'AuthPage'}">Войти</router-link></button>
     </div>
   </div>
 </template>

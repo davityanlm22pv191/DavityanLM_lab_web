@@ -1,5 +1,6 @@
 <template>
-  <footer class="mt-auto position-sticky bg-dark text-center text-white mt-3">
+<!--  mt-auto position-sticky-->
+  <footer class="footer fixed-bottom bg-dark text-center text-white mt-3">
     <!-- Grid container -->
     <div class="container p-4 pb-0">
       <!-- Section: Social media -->
