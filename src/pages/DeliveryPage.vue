@@ -7,35 +7,15 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-xl-4 col-md-6 col-sm-12 mb-5">
-          <div class="card" style="width: 18rem;">
-            <img src="../assets/cake-cherry.jpg" class="card-img-top" alt="Торт вишневый">
-            <div class="card-body">
-              <h5 class="card-title">Вишневый торт</h5>
-              <p class="card-text">Вес: 1800<br>Цена: 2160₽</p>
-              <a href="#" class="btn btn-secondary">Купить</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xl-4 col-md-6 col-sm-12 mb-5">
-          <div class="card" style="width: 18rem;">
-            <img src="../assets/cake-chocolate.jpg" class="card-img-top" alt="Торт шоколадный">
-            <div class="card-body">
-              <h5 class="card-title">Шоколадный торт</h5>
-              <p class="card-text">Вес: 1105<br>Цена: 2640₽</p>
-              <a href="#" class="btn btn-secondary">Купить</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xl-4 col-md-6 col-sm-12 mb-5">
-          <div class="card" style="width: 18rem;">
-            <img src="../assets/cake-lemon.jpg" class="card-img-top" alt="Пирог лимонный">
-            <div class="card-body">
-              <h5 class="card-title">Лимонный пирог</h5>
-              <p class="card-text">Вес: 1800<br>Цена: 2240₽</p>
-              <a href="#" class="btn btn-secondary">Купить</a>
+        <div v-for="product in products" :key="product.id" v-on:click="load()" :class="row">>
+          <div class="col-xl-4 col-md-6 col-sm-12 mb-5">
+            <div class="card" style="width: 18rem;">
+              <img src="../assets/cake-cherry.jpg" class="card-img-top" alt="Торт вишневый">
+              <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text">{{product.weight}}<br>{{ product.price }}</p>
+                <btn v-on:click="load()" href="" class="btn btn-secondary">Купить</btn>
+              </div>
             </div>
           </div>
         </div>
@@ -57,7 +37,7 @@
             <div class="card-body">
               <h5 class="card-title">Кофе Декаф</h5>
               <p class="card-text">Вес: 200<br>Цена: 1000₽</p>
-              <a href="#" class="btn btn-secondary">Купить</a>
+              <btn v-on:click="load()" href="" class="btn btn-secondary">Купить</btn>
             </div>
           </div>
         </div>
@@ -68,7 +48,7 @@
             <div class="card-body">
               <h5 class="card-title">Кофе Марагод</h5>
               <p class="card-text">Вес: 200<br>Цена: 1200₽</p>
-              <a href="#" class="btn btn-secondary">Купить</a>
+              <btn v-on:click="load()" href="" class="btn btn-secondary">Купить</btn>
             </div>
           </div>
         </div>
@@ -79,7 +59,7 @@
             <div class="card-body">
               <h5 class="card-title">Кофе Куба</h5>
               <p class="card-text">Вес: 200<br>Цена: 1000₽</p>
-              <a href="#" class="btn btn-secondary">Купить</a>
+              <btn href="" v-on:click="load()" class="btn btn-secondary">Купить</btn>
             </div>
           </div>
         </div>
@@ -101,7 +81,7 @@
             <div class="card-body">
               <h5 class="card-title">Эко-стакан 0,5л</h5>
               <p class="card-text">Вес: 200<br>Цена: 2000₽</p>
-              <a href="#" class="btn btn-secondary">Купить</a>
+              <a href="" class="btn btn-secondary">Купить</a>
             </div>
           </div>
         </div>
@@ -112,7 +92,7 @@
             <div class="card-body">
               <h5 class="card-title">Эко-стакан 0,4л</h5>
               <p class="card-text">Вес: 200<br>Цена: 1800₽</p>
-              <a href="#" class="btn btn-secondary">Купить</a>
+              <a href="" class="btn btn-secondary">Купить</a>
             </div>
           </div>
         </div>
@@ -123,7 +103,7 @@
             <div class="card-body">
               <h5 class="card-title">Эко-стакан 0,3л</h5>
               <p class="card-text">Вес: 200<br>Цена: 1600₽</p>
-              <a href="#" class="btn btn-secondary">Купить</a>
+              <a href="" v-on:click="load()" class="btn btn-secondary">Купить</a>
             </div>
           </div>
         </div>
@@ -137,10 +117,42 @@
 <script>
 
 
-export default {
-  components: {
-  }
+import axios from "axios";
 
+
+export default {
+  props: ["product"],
+  data() {
+    return {
+      products: [
+        {
+          name: "Лимонный пирог",
+          weight: "Вес: 1800",
+          price: "Цена: 2240₽"
+        },
+        {
+          name: "Лимонный пирог",
+          weight: "Вес: 1800",
+          price: "Цена: 2240₽"
+        },
+        {
+          name: "Лимонный пирог",
+          weight: "Вес: 1800",
+          price: "Цена: 2240₽"
+        },
+      ]
+    }
+  },
+  methods: {
+    load() {
+      // console.log()
+      // console.log("123321")
+      console.log(this.products)
+      axios
+          .get('https://0.0.0.0:3001/api/products')
+          .then(response => (this.products = response));
+    }
+  }
 }
 
 export class DeliveryVue {

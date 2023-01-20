@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+
+  products:
+    image: termyter228/back:products
+    build:
+      context: Cofe
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      SERVICE_NAME: products
+
+
+  gateway:
+    build:
+      context: Gateway
+      dockerfile: ./Dockerfile
+    links:
+      - products
+    ports:
+      - 8080:80

@@ -55,6 +55,8 @@
 
 <script>
 
+import axios from 'axios';
+
 export default {
   data(){
     return{
@@ -65,6 +67,7 @@ export default {
       borderStyle: ''
     }
   },
+  props: ["item"],
   methods:{
 
     changeCurrentLogin(event){
@@ -79,13 +82,18 @@ export default {
         if(this.currentLogin === this.login && this.currentPassword === this.password){
           this.borderStyle = "border border-3 border-success"
           this.$router.push({name: 'DeliveryPage'})
+          this.load()
         } else{
           this.borderStyle = "border border-3 border-danger"
         }
+    },
+
+    load() {
+      axios
+          .get('https://0.0.0.0:3001/api/products')
+          .then(response => (this.info = response));
     }
   }
-
-
 }
 
 </script>
